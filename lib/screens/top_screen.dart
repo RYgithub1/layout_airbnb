@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 
+
 class TopScreen extends StatefulWidget {
   @override
   _TopScreenState createState() => _TopScreenState();
@@ -83,7 +84,7 @@ class _TopScreenState extends State<TopScreen> {
                   decoration: InputDecoration(
                     icon: Icon(Icons.search),
                     // border: OutlineInputBorder(), // BoxDecoration側で吸収
-                    labelText: '行き先はどちらですか?',
+                    labelText: '次の行き先はどちらですか?',
                     hintText: 'hint: 一生に一度は行きたい場所',
                   ),
                   onChanged: null,
@@ -92,15 +93,31 @@ class _TopScreenState extends State<TopScreen> {
             ),
             SizedBox(height: 10.0),
             // ======= 体験の提供 ==================
-            Container(  // TODO: topOmage
-              height: 50,
-              color: Colors.amber[500],
-              child: const Center(child: Text('Entry B')),
+            Container(
+              height: 150,
+              child: ListView(
+                // scrollDirection: Axis.horizontal,  // 横並びにするとエラー
+                children: <Widget>[
+                  Container(
+                    child: ListView(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      children: [
+                        Image.asset('assets/images/house01.jpeg' ,width:300,height:100),
+                        Image.asset('assets/images/house02.jpg' ,width:300,height:100),
+                        Image.asset('assets/images/house03.jpg' ,width:300,height:100),
+                        Image.asset('assets/images/house04.webp' ,width:300,height:100),
+                        Image.asset('assets/images/house05.jpg' ,width:300,height:100),
+                      ],
+                    )
+                  ),
+                ],
+              )
             ),
             SizedBox(height: 10.0),
             // ======= 説明内容 ==================
             Container(
-              height: 360,
+              height: 300,
               child: ListView(
                 scrollDirection: Axis.horizontal,
                 children: <Widget>[
